@@ -1,0 +1,86 @@
+nav.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 10;
+    .components {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 130%;
+      z-index: 10;
+      cursor: pointer;
+      margin-right: 30px;
+      a {
+        z-index: 10;
+        list-style-type: none;
+        text-decoration: none;
+        color: inherit;
+      }
+      @media (max-width: 1156px) {
+        display: none;
+      }
+    }
+    .signin {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 130%;
+      z-index: 10;
+      cursor: pointer;
+      @media (max-width: 1156px) {
+        display: none;
+      }
+      .button {
+        border-radius: 5px;
+        background: #184171;
+        width: 150px;
+        height: 49px;
+        color: white;
+        margin-right: 5px;
+        z-index: 10;
+      }
+    }
+    .toggle {
+      cursor: pointer;
+      z-index: 10;
+      margin-left: 20px;
+      margin-right: 5px;
+      .box {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        flex-direction: column;
+        text-align: end;
+        background-color: #ffffffc9;
+        padding: 30px;
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        border-radius: 5px;
+        box-shadow: 0 10px 20px 0 rgba(0,0,0,0.5);
+        z-index: 10;
+        .dropdown {
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          flex-direction: column;
+          color: white;
+          text-align: end;
+          padding: 1px;
+          li {
+            margin-top: 8px;
+            list-style-type: none;
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    }
+  }
