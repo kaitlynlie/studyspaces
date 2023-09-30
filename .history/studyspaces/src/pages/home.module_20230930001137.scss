@@ -71,20 +71,20 @@ body {
                         img {
                             cursor: pointer;
                         }
-                    }
-                        .input {
+                        input[type="range"] {
                           margin-top: -5px;
                           margin-bottom: 10px;
-                          color: black;
-                          background-color: black;
-                          -webkit-appearance: none;
-                          appearance: none;
-                          width: 100%;
-                          height: 5px;
-                          background-color: black; /* Set the default color of the track/bar */
-                          outline: none;
-                          position: relative;
-                          &::-webkit-slider-thumb {
+                          #peopleVolumeSlider {
+                            -webkit-appearance: none;
+                            appearance: none;
+                            width: 100%;
+                            height: 5px;
+                            background-color: black; /* Set the default color of the track/bar */
+                            outline: none;
+                            position: relative;
+                          }
+                        
+                          #peopleVolumeSlider::-webkit-slider-thumb {
                             -webkit-appearance: none;
                             appearance: none;
                             width: 12px;
@@ -95,6 +95,9 @@ body {
                             position: relative;
                             z-index: 1;
                           }
+                          &::-webkit-slider-thumb {
+                            background-color: black;
+                          }
                         
                           &::-moz-range-thumb {
                             background-color: black;
@@ -104,6 +107,7 @@ body {
                             background-color: black;
                           }
                         }
+                    }
                 }
             }
         }

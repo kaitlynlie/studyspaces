@@ -114,7 +114,6 @@ export function Home() {
                     step={0.1}
                     value={sliderValues.peopleVolumeSlider}
                     onChange={handleSliderChange}
-                    className={clsx(styles.input)}
                   />
                 </div>
 
@@ -139,15 +138,15 @@ export function Home() {
                   </audio>
 
                   <input
-                    type="range"
-                    id="machVolumeSlider"
-                    min={0}
-                    max={1}
-                    step={0.1}
-                    value={sliderValues.machVolumeSlider}
-                    onChange={handleSliderChange}
-                    className={clsx(styles.input)}
-                  />
+  type="range"
+  id="machVolumeSlider"
+  min={0}
+  max={1}
+  step={0.1}
+  value={sliderValues.machVolumeSlider}
+  onChange={handleSliderChange}
+  style={{ background: 'black' }}
+/>
                 </div>
 
                 <div className={clsx(styles.audio)}>
@@ -178,7 +177,6 @@ export function Home() {
                     step={0.1}
                     value={sliderValues.sunnyVolumeSlider}
                     onChange={handleSliderChange}
-                    className={clsx(styles.input)}
                   />
                 </div>
 
@@ -210,7 +208,6 @@ export function Home() {
                     step={0.1}
                     value={sliderValues.rainyVolumeSlider}
                     onChange={handleSliderChange}
-                    className={clsx(styles.input)}
                   />
                 </div>
 
@@ -242,7 +239,6 @@ export function Home() {
                     step={0.1}
                     value={sliderValues.fireVolumeSlider}
                     onChange={handleSliderChange}
-                    className={clsx(styles.input)}
                   />
                 </div>
               </div>

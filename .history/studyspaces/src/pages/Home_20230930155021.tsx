@@ -211,6 +211,7 @@ export function Home() {
                     value={sliderValues.rainyVolumeSlider}
                     onChange={handleSliderChange}
                     className={clsx(styles.input)}
+
                   />
                 </div>
 
@@ -242,7 +243,6 @@ export function Home() {
                     step={0.1}
                     value={sliderValues.fireVolumeSlider}
                     onChange={handleSliderChange}
-                    className={clsx(styles.input)}
                   />
                 </div>
               </div>

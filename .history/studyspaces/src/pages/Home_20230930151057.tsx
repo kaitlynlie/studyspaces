@@ -114,7 +114,6 @@ export function Home() {
                     step={0.1}
                     value={sliderValues.peopleVolumeSlider}
                     onChange={handleSliderChange}
-                    className={clsx(styles.input)}
                   />
                 </div>
 
@@ -146,7 +145,7 @@ export function Home() {
                     step={0.1}
                     value={sliderValues.machVolumeSlider}
                     onChange={handleSliderChange}
-                    className={clsx(styles.input)}
+                    style={{ background: 'black' }}
                   />
                 </div>
 
@@ -178,7 +177,6 @@ export function Home() {
                     step={0.1}
                     value={sliderValues.sunnyVolumeSlider}
                     onChange={handleSliderChange}
-                    className={clsx(styles.input)}
                   />
                 </div>
 
@@ -210,7 +208,6 @@ export function Home() {
                     step={0.1}
                     value={sliderValues.rainyVolumeSlider}
                     onChange={handleSliderChange}
-                    className={clsx(styles.input)}
                   />
                 </div>
 
@@ -242,7 +239,6 @@ export function Home() {
                     step={0.1}
                     value={sliderValues.fireVolumeSlider}
                     onChange={handleSliderChange}
-                    className={clsx(styles.input)}
                   />
                 </div>
               </div>
