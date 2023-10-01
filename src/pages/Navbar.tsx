@@ -5,7 +5,7 @@ import { title } from '../assets'
 import { useState, useEffect } from 'react'
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@material-ui/core';
-import { TimerDialog } from '.'
+import { TimerDialog, TodoDialog } from '.'
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -47,14 +47,12 @@ const Navbar = () => {
         )}
         </div>
 
-    {/* Todo Dialog */}
     <Dialog open={openTodo} onClose={handleClose}>
       <DialogActions>
       <RiCloseLine color="#000" size={27} onClick={handleClose} />
       </DialogActions>
-      <DialogTitle>Todo</DialogTitle>
       <DialogContent>
-        {/* Add your content for the Todo dialog here */}
+        <TodoDialog />
       </DialogContent>
     </Dialog>
 
@@ -63,7 +61,7 @@ const Navbar = () => {
         <RiCloseLine color="#000" size={27} onClick={handleClose} />
       </DialogActions>
       <DialogContent>
-        <TimerDialog />
+      <TimerDialog open={openTimer} onClose={handleClose} />
       </DialogContent>
     </Dialog>
   </nav>
