@@ -41,7 +41,7 @@ body {
                 transition: gap 0.3s ease;
                 gap: 50px;
             }
-            @media (max-width: 990px) {
+            @media (max-width: 919px) {
               flex-direction: column;
             }
             .hero {
@@ -103,22 +103,12 @@ body {
                         flex-direction: row;
                         justify-content: center;
                         align-items: center;
-                        gap: 7px;
+                        gap: 5px;
                         img {
                             cursor: pointer;
-                            max-width: 14px;
-                            @media (max-width: 431px) {
-                              max-width: 8px;
-                            }
                         }
                         p {
-                          font-size: 16px;
-                          @media (max-width: 664px) {
-                            font-size: 14px;
-                          }
-                          @media (max-width: 431px) {
-                            font-size: 12px;
-                          }
+                          font-size: 10px;
                         }
                     }
                         .input {

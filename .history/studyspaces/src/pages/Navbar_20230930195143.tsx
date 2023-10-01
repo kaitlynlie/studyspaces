@@ -58,12 +58,14 @@ const Navbar = () => {
       </DialogContent>
     </Dialog>
 
-    <Dialog open={openTimer} onClose={handleClose}>
+    {/* Timer Dialog */}
+    <Dialog open={openTimer} onClose={handleClose} >
       <DialogActions>
-        <RiCloseLine color="#000" size={27} onClick={handleClose} />
+      <RiCloseLine color="#000" size={27} onClick={handleClose} />
       </DialogActions>
+      <DialogTitle>Timer</DialogTitle>
       <DialogContent>
-        <TimerDialog />
+        {/* Add your content for the Timer dialog here */}
       </DialogContent>
     </Dialog>
   </nav>
