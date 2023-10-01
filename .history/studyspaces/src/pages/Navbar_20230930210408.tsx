@@ -51,6 +51,7 @@ const Navbar = () => {
       <DialogActions>
       <RiCloseLine color="#000" size={27} onClick={handleClose} />
       </DialogActions>
+      <DialogTitle>Todo</DialogTitle>
       <DialogContent>
         <TodoDialog />
       </DialogContent>
@@ -61,7 +62,7 @@ const Navbar = () => {
         <RiCloseLine color="#000" size={27} onClick={handleClose} />
       </DialogActions>
       <DialogContent>
-      <TimerDialog open={openTimer} onClose={handleClose} />
+        <TimerDialog />
       </DialogContent>
     </Dialog>
   </nav>
