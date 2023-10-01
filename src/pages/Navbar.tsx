@@ -2,9 +2,10 @@ import React from 'react'
 import styles from './Navbar.module.scss'
 import clsx from 'clsx'
 import { title } from '../assets'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@material-ui/core';
+import { TimerDialog } from '.'
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -57,14 +58,12 @@ const Navbar = () => {
       </DialogContent>
     </Dialog>
 
-    {/* Timer Dialog */}
-    <Dialog open={openTimer} onClose={handleClose} >
+    <Dialog open={openTimer} onClose={handleClose}>
       <DialogActions>
-      <RiCloseLine color="#000" size={27} onClick={handleClose} />
+        <RiCloseLine color="#000" size={27} onClick={handleClose} />
       </DialogActions>
-      <DialogTitle>Timer</DialogTitle>
       <DialogContent>
-        {/* Add your content for the Timer dialog here */}
+        <TimerDialog />
       </DialogContent>
     </Dialog>
   </nav>
