@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { title, todo } from '../assets'
 import { useState, useEffect } from 'react'
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@material-ui/core';
+import { Dialog, DialogContent, DialogActions } from '@material-ui/core';
 import { TimerDialog, TodoDialog } from '.'
 
 const Navbar = () => {
