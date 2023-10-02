@@ -8,14 +8,21 @@ import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mate
 import { TimerDialog, TodoDialog } from '.'
 
 const Navbar = () => {
+  const [toggleMenu, setToggleMenu] = useState(false);
   const [openTodo, setOpenTodo] = useState(false);
+  const [openTimer, setOpenTimer] = useState(false);
   
   const handleClickOpenTodo = () => {
     setOpenTodo(true);
   };
   
+  const handleClickOpenTimer = () => {
+    setOpenTimer(true);
+  };
+  
   const handleClose = () => {
     setOpenTodo(false);
+    setOpenTimer(false);
   };
 
   return (
@@ -32,6 +39,15 @@ const Navbar = () => {
         <TodoDialog />
       </DialogContent>
     </Dialog>
+
+    <Dialog open={openTimer} onClose={handleClose}>
+        <DialogActions>
+          <RiCloseLine color="#000" size={27} onClick={handleClose} />
+        </DialogActions>
+        <DialogContent>
+          <TimerDialog open={openTimer} />
+        </DialogContent>
+      </Dialog>
   </nav>
   )
 }

@@ -91,14 +91,14 @@ const TimerDialog = () => {
     <div className={clsx(styles.timer)}>
       <h2>Pomodoro Timer</h2>
       <div className={clsx(styles.countdown)}>{formatTime(timeRemaining)}</div>
-      <div className={clsx(styles.container)}><input
+      <input
         type="number"
         min={1}
         value={customTime}
         onChange={handleTimeInputChange}
         placeholder="Enter time in minutes"
         className={clsx(styles.input)}
-      /></div>
+      />
 
       <div className={clsx(styles.buttons)}>
         {!isRunning && (

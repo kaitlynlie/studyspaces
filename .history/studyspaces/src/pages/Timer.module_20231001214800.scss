@@ -1,0 +1,65 @@
+div.timer {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    h2 {
+        text-align: center;
+        font-size: 18px;
+        @media (max-width: 664px) {
+            font-size: 14px;
+        }
+    }
+    .countdown {
+        margin-top: -10px;
+        text-align: center;
+        font-size: 48px;
+        @media (max-width: 664px) {
+            font-size: 32px;
+        }
+        font-weight: 800;
+    }
+    .input {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 200px;
+        @media (max-width: 664px) {
+            width: 150px;
+            font-size: 14px;
+        }
+    }
+    .buttons {
+        display: flex;
+        justify-content: center;
+        .start {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #8d6e63;
+            color: white;
+            border: none;
+            cursor: pointer;
+            @media (max-width: 664px) {
+                width: 150px;
+            }
+        }
+        .stop {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #d7ccc8;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .reset {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #607d88;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}

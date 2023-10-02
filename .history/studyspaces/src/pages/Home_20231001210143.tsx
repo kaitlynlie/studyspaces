@@ -81,12 +81,13 @@ export function Home() {
             <h4>Cafe</h4>
             <div className={clsx(styles.content)}>
               <div className={clsx(styles.hero)}>
-                {/* <img id="leftArrow" src={leftarrow} className={clsx(styles.leftarrow)}/> */}
+                <img id="leftArrow" src={leftarrow} className={clsx(styles.leftarrow)}/>
                 <img src={coffee} className={clsx(styles.coffee)} />
-                {/* <img id="rightArrow" src={rightarrow} className={clsx(styles.rightarrow)}/> */}
+                <img id="rightArrow" src={rightarrow} className={clsx(styles.rightarrow)}/>
               </div>
 
               <div className={clsx(styles.audiolist)}>
+              <TimerDialog />
                 <div className={clsx(styles.audio)}>
                   <div className={clsx(styles.title)}>
                     <p>People</p>
@@ -246,7 +247,6 @@ export function Home() {
                     className={clsx(styles.input)}
                   />
                 </div>
-                <TimerDialog />
               </div>
             </div>
         </section>

@@ -81,9 +81,9 @@ export function Home() {
             <h4>Cafe</h4>
             <div className={clsx(styles.content)}>
               <div className={clsx(styles.hero)}>
-                {/* <img id="leftArrow" src={leftarrow} className={clsx(styles.leftarrow)}/> */}
+                <img id="leftArrow" src={leftarrow} className={clsx(styles.leftarrow)}/>
                 <img src={coffee} className={clsx(styles.coffee)} />
-                {/* <img id="rightArrow" src={rightarrow} className={clsx(styles.rightarrow)}/> */}
+                <img id="rightArrow" src={rightarrow} className={clsx(styles.rightarrow)}/>
               </div>
 
               <div className={clsx(styles.audiolist)}>
