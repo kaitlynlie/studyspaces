@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { timer } from '../audio';
+import clsx from 'clsx';
+import styles from './Timer.module.scss'
 
 const TimerDialog = () => {
   const [timeRemaining, setTimeRemaining] = useState(10 * 60); 
@@ -86,38 +88,23 @@ const TimerDialog = () => {
   };
 
   return (
-    <div style={{padding: "10px"}}>
-      <h2 style={{textAlign: "center", fontSize: "18px"}}>Pomodoro Timer</h2>
-      <div style={{textAlign: 'center', fontSize: "48px", fontWeight: "800", marginTop: "-10px"}}>{formatTime(timeRemaining)}</div>
-      <input
+    <div className={clsx(styles.timer)}>
+      <h2>Pomodoro Timer</h2>
+      <div className={clsx(styles.countdown)}>{formatTime(timeRemaining)}</div>
+      <div className={clsx(styles.container)}><input
         type="number"
         min={1}
         value={customTime}
         onChange={handleTimeInputChange}
         placeholder="Enter time in minutes"
-        style={{
-          marginTop: '10px',
-          marginBottom: '10px',
-          padding: '10px',
-          fontSize: '16px',
-          borderRadius: '5px',
-          border: '1px solid #ccc',
-          width: '200px',
-        }}
-      />
+        className={clsx(styles.input)}
+      /></div>
 
-      <div style={{display: 'flex', justifyContent: 'center'}}>
+      <div className={clsx(styles.buttons)}>
         {!isRunning && (
           <button
             onClick={startTimer}
-            style={{
-              padding: '10px 20px',
-              fontSize: '16px',
-              backgroundColor: '#8D6E63',
-              color: '#fff',
-              border: 'none',
-              cursor: 'pointer',
-            }}
+            className={clsx(styles.start)}
           >
             Start
           </button>
@@ -126,14 +113,7 @@ const TimerDialog = () => {
         {isRunning && (
           <button
             onClick={stopTimer}
-            style={{
-              padding: '10px 20px',
-              fontSize: '16px',
-              backgroundColor: '#D7CCC8',
-              color: '#fff',
-              border: 'none',
-              cursor: 'pointer',
-            }}
+            className={clsx(styles.stop)}
           >
             Stop
           </button>
@@ -141,14 +121,7 @@ const TimerDialog = () => {
 
         <button
           onClick={resetTimer}
-          style={{
-            padding: '10px 20px',
-            fontSize: '16px',
-            backgroundColor: '#607D8B',
-            color: '#fff',
-            border: 'none',
-            cursor: 'pointer',
-          }}
+          className={clsx(styles.reset)}
         >
           Reset
         </button>
