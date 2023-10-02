@@ -18,7 +18,8 @@ const TodoList = ({ todos, removeTodo }) => {
     color: '#fff',
     border: 'none',
     cursor: 'pointer',
-    marginLeft: '10px'
+    marginLeft: '10px',
+    marginBottom: '10px'
   }}>Remove</button>
           </li>
         );

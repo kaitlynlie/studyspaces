@@ -4,6 +4,7 @@ import leftarrow from './leftarrow.svg'
 import rightarrow from './rightarrow.svg'
 import play from './play.svg'
 import pause from './pause.svg'
+import todo from './todo.svg'
 
 export {
     title,
@@ -11,5 +12,6 @@ export {
     leftarrow,
     rightarrow,
     play,
-    pause
+    pause,
+    todo
 }

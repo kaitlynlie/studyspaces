@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { timer } from '../audio';
 
 const TimerDialog = () => {
-  const [timeRemaining, setTimeRemaining] = useState(1); 
+  const [timeRemaining, setTimeRemaining] = useState(10 * 60); 
   const [isRunning, setIsRunning] = useState(false);
   const [customTime, setCustomTime] = useState('');
+  const [wasPaused, setWasPaused] = useState(false); // Track whether the timer was paused
 
   useEffect(() => {
     let timerId;
@@ -29,19 +30,43 @@ const TimerDialog = () => {
   };
 
   const startTimer = () => {
-    const timeInSeconds = parseInt(customTime) * 60; 
-    setTimeRemaining(timeInSeconds);
-    setIsRunning(true);
+    if (!isRunning && !wasPaused) {
+      // Parse the customTime or set a default value if it's empty
+      const timeInSeconds = parseInt(customTime) * 60 || 10 * 60; // Use a default of 10 minutes if customTime is empty
+      setTimeRemaining(timeInSeconds);
+      setIsRunning(true);
+      localStorage.setItem('customTime', customTime);
+    } else {
+      // Check if the timer was paused and customTime is modified
+      if (wasPaused && customTime !== '') {
+        const timeInSeconds = parseInt(customTime) * 60;
+        setTimeRemaining(timeInSeconds);
+      }
+      setIsRunning(true);
+      setWasPaused(false);
+    }
   };
+  
+  
+
+  useEffect(() => {
+    const savedCustomTime = localStorage.getItem('customTime');
+    if (savedCustomTime) {
+      setCustomTime(savedCustomTime);
+    }
+  }, []);
 
   const stopTimer = () => {
     setIsRunning(false);
+    setWasPaused(true); // Set the flag to indicate the timer was paused
   };
 
   const resetTimer = () => {
-    setTimeRemaining(1);
+    setTimeRemaining(10 * 60);
     setIsRunning(false);
-    setCustomTime(''); 
+    setCustomTime('');
+    localStorage.removeItem('customTime');
+    setWasPaused(false); // Reset the pause flag
   };
 
   const formatTime = (timeInSeconds) => {
@@ -62,70 +87,72 @@ const TimerDialog = () => {
 
   return (
     <div style={{padding: "10px"}}>
-      <h2 style={{textAlign: "center", marginTop: "-10px"}}>Pomodoro Timer</h2>
-      <div style={{textAlign: 'center', fontSize: "48px", fontWeight: "800"}}>{formatTime(timeRemaining)}</div>
+      <h2 style={{textAlign: "center", fontSize: "18px"}}>Pomodoro Timer</h2>
+      <div style={{textAlign: 'center', fontSize: "48px", fontWeight: "800", marginTop: "-10px"}}>{formatTime(timeRemaining)}</div>
       <input
-  type="number"
-  min={1}
-  value={customTime}
-  onChange={handleTimeInputChange}
-  placeholder="Enter time in minutes"
-  style={{
-    marginTop: '20px',
-    marginBottom: '10px',
-    padding: '10px',
-    fontSize: '16px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-    width: '200px',
-  }}
-/>
+        type="number"
+        min={1}
+        value={customTime}
+        onChange={handleTimeInputChange}
+        placeholder="Enter time in minutes"
+        style={{
+          marginTop: '10px',
+          marginBottom: '10px',
+          padding: '10px',
+          fontSize: '16px',
+          borderRadius: '5px',
+          border: '1px solid #ccc',
+          width: '200px',
+        }}
+      />
 
-{!isRunning && (
-  <button
-    onClick={startTimer}
-    style={{
-      padding: '10px 20px',
-      fontSize: '16px',
-      backgroundColor: '#8D6E63',
-      color: '#fff',
-      border: 'none',
-      cursor: 'pointer',
-    }}
-  >
-    Start
-  </button>
-)}
+      <div style={{display: 'flex', justifyContent: 'center'}}>
+        {!isRunning && (
+          <button
+            onClick={startTimer}
+            style={{
+              padding: '10px 20px',
+              fontSize: '16px',
+              backgroundColor: '#8D6E63',
+              color: '#fff',
+              border: 'none',
+              cursor: 'pointer',
+            }}
+          >
+            Start
+          </button>
+        )}
 
-{isRunning && (
-  <button
-    onClick={stopTimer}
-    style={{
-      padding: '10px 20px',
-      fontSize: '16px',
-      backgroundColor: '#D7CCC8',
-      color: '#fff',
-      border: 'none',
-      cursor: 'pointer',
-    }}
-  >
-    Stop
-  </button>
-)}
+        {isRunning && (
+          <button
+            onClick={stopTimer}
+            style={{
+              padding: '10px 20px',
+              fontSize: '16px',
+              backgroundColor: '#D7CCC8',
+              color: '#fff',
+              border: 'none',
+              cursor: 'pointer',
+            }}
+          >
+            Stop
+          </button>
+        )}
 
-<button
-  onClick={resetTimer}
-  style={{
-    padding: '10px 20px',
-    fontSize: '16px',
-    backgroundColor: '#607D8B',
-    color: '#fff',
-    border: 'none',
-    cursor: 'pointer',
-  }}
->
-  Reset
-</button>
+        <button
+          onClick={resetTimer}
+          style={{
+            padding: '10px 20px',
+            fontSize: '16px',
+            backgroundColor: '#607D8B',
+            color: '#fff',
+            border: 'none',
+            cursor: 'pointer',
+          }}
+        >
+          Reset
+        </button>
+      </div>
     </div>
   );
 };

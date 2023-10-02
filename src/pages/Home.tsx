@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { title, coffee, leftarrow, rightarrow, play, pause } from "../assets";
 import React, { ChangeEvent, useState, useRef, useEffect } from 'react';
 import { people, machinery, sunny, rainy, fire } from "../audio";
+import { TimerDialog } from ".";
 
 export function Home() {
   const [sliderValues, setSliderValues] = useState({
@@ -245,6 +246,7 @@ export function Home() {
                     className={clsx(styles.input)}
                   />
                 </div>
+                <TimerDialog />
               </div>
             </div>
         </section>
