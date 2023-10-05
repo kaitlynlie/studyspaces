@@ -5,6 +5,8 @@ import rightarrow from './rightarrow.svg'
 import play from './play.svg'
 import pause from './pause.svg'
 import todo from './todo.svg'
+import forest from './forest.jpg'
+import loaderheader from './loaderheader.png'
 
 export {
     title,
@@ -13,5 +15,7 @@ export {
     rightarrow,
     play,
     pause,
-    todo
+    todo,
+    forest,
+    loaderheader
 }

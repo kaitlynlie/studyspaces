@@ -1,11 +1,10 @@
-import React from 'react'
 import styles from './Navbar.module.scss'
 import clsx from 'clsx'
-import { title, todo } from '../assets'
-import { useState, useEffect } from 'react'
-import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
+import { todo } from '../assets'
+import { useState } from 'react'
+import { RiCloseLine } from 'react-icons/ri';
 import { Dialog, DialogContent, DialogActions } from '@material-ui/core';
-import { TimerDialog, TodoDialog } from '.'
+import { TodoDialog } from '.'
 
 const Navbar = () => {
   const [openTodo, setOpenTodo] = useState(false);

@@ -1,6 +1,5 @@
-import React from 'react';
-
 const TodoList = ({ todos, removeTodo }) => {
+  // @ts-ignore
   return (
     <ul>
       {todos.map((todo) => {

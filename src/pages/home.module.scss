@@ -1,5 +1,43 @@
 body {
     background-color: rgb(168, 162, 157);
+    .leftleaves, .rightleaves {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+      animation: leavesAnimation 3s forwards;
+    }
+    .leftleaves {
+      left: 0;
+      background-image: url('../assets//leftleaves.png');
+      animation-name: leftLeavesAnimation;
+    }
+    .rightleaves {
+      right: 0;
+      background-image: url('../assets/rightleaves.png');
+      animation-name: rightLeavesAnimation;
+    }
+    @keyframes leftLeavesAnimation {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+    }
+    @keyframes rightLeavesAnimation {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
     section.home {
         padding: 10px;
         display: flex;

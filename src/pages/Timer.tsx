@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { timer } from '../audio';
 import clsx from 'clsx';
 import styles from './Timer.module.scss'
@@ -10,10 +10,10 @@ const TimerDialog = () => {
   const [wasPaused, setWasPaused] = useState(false); // Track whether the timer was paused
 
   useEffect(() => {
-    let timerId;
+    let timerId: NodeJS.Timeout | undefined;
 
     if (isRunning && timeRemaining > 0) {
-      timerId = setInterval(() => {
+      timerId = setTimeout(() => {
         setTimeRemaining(prevTime => prevTime - 1);
       }, 1000);
     }
@@ -27,7 +27,7 @@ const TimerDialog = () => {
     return () => clearInterval(timerId);
   }, [isRunning, timeRemaining]);
 
-  const handleTimeInputChange = (event) => {
+  const handleTimeInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCustomTime(event.target.value);
   };
 
@@ -71,7 +71,7 @@ const TimerDialog = () => {
     setWasPaused(false); // Reset the pause flag
   };
 
-  const formatTime = (timeInSeconds) => {
+  const formatTime = (timeInSeconds: number) => {
     if (isNaN(timeInSeconds) || timeInSeconds < 0) {
       return '';
     }

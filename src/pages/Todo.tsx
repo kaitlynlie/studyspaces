@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import TodoList from './TodoList';
+import { TodoList } from '.';
+
 
 const TodoDialog = () => {
   const [todos, setTodos] = useState([]);
@@ -19,11 +20,12 @@ const TodoDialog = () => {
     fetchTodos();
   }, []);
 
-  const handleTodoInputChange = (event) => {
+  const handleTodoInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodoInput(event.target.value);
   };
 
   const addTodo = async () => {
+    
     try {
       const response = await axios.post('http://localhost:8080/api/todos', { todo: todoInput });
       setTodos(response.data);
@@ -34,7 +36,7 @@ const TodoDialog = () => {
     }
   };
 
-  const removeTodo = async (id) => {
+  const removeTodo = async (id: string) => {
     try {
       await axios.delete(`http://localhost:8080/api/todos/${id}`);
       setTodos(todos.filter((todo) => todo._id !== id)); // Update todos state by filtering out the removed item

@@ -1,7 +1,7 @@
 import styles from "./home.module.scss";
 import clsx from "clsx";
-import { title, coffee, leftarrow, rightarrow, play, pause } from "../assets";
-import React, { ChangeEvent, useState, useRef, useEffect } from 'react';
+import { title, coffee, play, pause } from "../assets";
+import { ChangeEvent, useState, useRef, useEffect } from 'react';
 import { people, machinery, sunny, rainy, fire } from "../audio";
 import { TimerDialog } from ".";
 
@@ -71,6 +71,8 @@ export function Home() {
 
   return (
     <div className={clsx(styles.body)}>
+      <div className={clsx(styles.leftleaves)}></div>
+      <div className={clsx(styles.rightleaves)}></div>
         <section className={clsx(styles.home)}>
           <div className={clsx(styles.header)}>
             <div className={clsx(styles.studyspaces)}>
