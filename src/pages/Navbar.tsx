@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { todo } from '../assets'
 import { useState } from 'react'
 import { RiCloseLine } from 'react-icons/ri';
-import { Dialog, DialogContent, DialogActions } from '@material-ui/core';
+import { Dialog, DialogContent, DialogActions } from '@mui/material'
 import { TodoDialog } from '.'
 
 const Navbar = () => {
