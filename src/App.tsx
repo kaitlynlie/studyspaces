@@ -3,11 +3,10 @@ import { Home } from "./pages/Home";
 import { useState, useEffect } from "react";
 import LoadingPage from "./Loadingpage";
 import Menu from './Menu'
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const location = useLocation();
 
   useEffect(() => {
     // Simulate a delay to showcase the loading animation
