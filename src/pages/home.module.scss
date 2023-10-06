@@ -1,5 +1,9 @@
 body {
     background-color: rgb(168, 162, 157);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     .leftleaves, .rightleaves {
       position: absolute;
       top: 0;
@@ -73,6 +77,7 @@ body {
         .content {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             gap: 200px;
             transition: gap 0.3s ease;
             @media (max-width: 1089px) {

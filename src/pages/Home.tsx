@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { title, coffee, play, pause } from "../assets";
 import { ChangeEvent, useState, useRef, useEffect } from 'react';
 import { people, machinery, sunny, rainy, fire } from "../audio";
-import { TimerDialog } from ".";
+import { Navbar, TimerDialog } from ".";
 
 export function Home() {
   const [sliderValues, setSliderValues] = useState({
@@ -73,14 +73,15 @@ export function Home() {
     <div className={clsx(styles.body)}>
       <div className={clsx(styles.leftleaves)}></div>
       <div className={clsx(styles.rightleaves)}></div>
+      <Navbar />
         <section className={clsx(styles.home)}>
           <div className={clsx(styles.header)}>
             <div className={clsx(styles.studyspaces)}>
-              <img src={title} className={clsx(styles.title)}/>
+              {/* <img src={title} className={clsx(styles.title)}/> */}
             </div>
           </div>
           
-            <h4>Cafe</h4>
+            {/* <h4>Cafe</h4> */}
             <div className={clsx(styles.content)}>
               <div className={clsx(styles.hero)}>
                 {/* <img id="leftArrow" src={leftarrow} className={clsx(styles.leftarrow)}/> */}

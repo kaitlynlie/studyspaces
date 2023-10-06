@@ -1,11 +1,13 @@
 import clsx from "clsx";
 import { Home } from "./pages/Home";
-import { Navbar } from "./pages";
 import { useState, useEffect } from "react";
 import LoadingPage from "./Loadingpage";
+import Menu from './Menu'
+import { Routes, Route, useLocation } from "react-router-dom";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     // Simulate a delay to showcase the loading animation
@@ -20,9 +22,11 @@ function App() {
         <LoadingPage />
       ) : (
         <>
-      <Navbar />
-      <Home />
-      </>
+          <Routes>
+            <Route index path="/" element={<Menu />} />
+            <Route path="/cafe" element={<Home />} />
+          </Routes>
+        </>
       )}
     </div>
   );
