@@ -5,6 +5,8 @@ import { ChangeEvent, useState, useRef, useEffect } from 'react';
 import { people, machinery, sunny, rainy, fire } from "../audio";
 import { Navbar, TimerDialog } from ".";
 
+//TODO: adjust smaller screen size for todo manager, upload to vercel
+
 export function Home() {
   const [sliderValues, setSliderValues] = useState({
     peopleVolumeSlider: 1,

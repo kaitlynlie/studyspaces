@@ -5,10 +5,4 @@
   text-align: center;
 }
 
-left-leaves {
-  left: 0;
-  background-image: url('../assets/leftleaves.png');
-  animation-name: leftLeavesAnimation;
-}
-
 
