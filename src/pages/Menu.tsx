@@ -35,7 +35,7 @@ function Menu() {
       >
         <option value="">Select a location.</option>
         <option value="cafe">Cafe</option>
-        <option value="park">Park</option>
+        <option value="park">Park (Work in Progress)</option>
         <option value="beach" disabled>Beach (Coming Soon)</option>
       </select>
       <span className={styles.arrow}></span>
