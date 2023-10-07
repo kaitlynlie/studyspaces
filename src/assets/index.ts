@@ -5,8 +5,8 @@ import rightarrow from './rightarrow.svg'
 import play from './play.svg'
 import pause from './pause.svg'
 import todo from './todo.svg'
-import forest from './forest.jpg'
 import loaderheader from './loaderheader.png'
+import park from './park.png'
 
 export {
     title,
@@ -16,6 +16,6 @@ export {
     play,
     pause,
     todo,
-    forest,
-    loaderheader
+    loaderheader,
+    park
 }

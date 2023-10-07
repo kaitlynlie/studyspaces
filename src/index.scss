@@ -10,16 +10,7 @@
   overflow-x: hidden;
 }
 
-@keyframes jump {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+body {
+  margin: 0 0;
 }
 
-.jumping-word {
-  display: inline-block;
-  animation: jump 1s infinite;
-}

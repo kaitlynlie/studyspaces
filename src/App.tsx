@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import { Home } from "./pages/Home";
 import { useState, useEffect } from "react";
-import LoadingPage from "./Loadingpage";
-import Menu from './Menu'
+import LoadingPage from "./pages/Loadingpage";
+import Menu from './pages/Menu'
+import { Park } from "./pages/Park";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Routes>
             <Route index path="/" element={<Menu />} />
             <Route path="/cafe" element={<Home />} />
+            <Route path='/park' element={<Park />} />
           </Routes>
         </>
       )}
