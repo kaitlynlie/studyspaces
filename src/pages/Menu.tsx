@@ -23,7 +23,7 @@ function Menu() {
       } else if (location === "beach") {
         navigate("/beach");
       }
-    }, 2000);
+    }, 4000);
   };
 
   return (
