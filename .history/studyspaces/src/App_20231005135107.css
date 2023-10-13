@@ -1,0 +1,14 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+left-leaves {
+  left: 0;
+  background-image: url('../assets/leftleaves.png');
+  animation-name: leftLeavesAnimation;
+}
+
+
