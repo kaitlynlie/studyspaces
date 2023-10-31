@@ -1,0 +1,10 @@
+body {
+  background-color: rgb(168, 162, 157);
+}
+body .loadingPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}/*# sourceMappingURL=Loadingpage.module_20231005170336.css.map */

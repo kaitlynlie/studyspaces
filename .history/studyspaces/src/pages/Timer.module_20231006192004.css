@@ -1,0 +1,95 @@
+div.timer {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+div.timer h2 {
+  text-align: center;
+  font-size: 18px;
+}
+@media (max-width: 664px) {
+  div.timer h2 {
+    font-size: 14px;
+  }
+}
+div.timer .countdown {
+  margin-top: -10px;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 800;
+}
+@media (max-width: 664px) {
+  div.timer .countdown {
+    font-size: 32px;
+  }
+}
+div.timer .container {
+  display: flex;
+  justify-content: center;
+}
+div.timer .container .input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 170px;
+  background-color: rgb(151, 34, 34);
+}
+@media (max-width: 664px) {
+  div.timer .container .input {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+div.timer .buttons {
+  display: flex;
+  justify-content: center;
+}
+div.timer .buttons .start {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #8d6e63;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+@media (max-width: 664px) {
+  div.timer .buttons .start {
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+div.timer .buttons .stop {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #d7ccc8;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+@media (max-width: 664px) {
+  div.timer .buttons .stop {
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+div.timer .buttons .reset {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #607d88;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+@media (max-width: 664px) {
+  div.timer .buttons .reset {
+    font-size: 12px;
+    padding: 5px;
+  }
+}/*# sourceMappingURL=Timer.module_20231006192004.css.map */
