@@ -1,6 +1,6 @@
 import styles from "./home.module.scss";
 import clsx from "clsx";
-import { coffee, play, pause, cafe } from "../assets";
+import { play, pause, cafe } from "../assets";
 import { ChangeEvent, useState, useRef, useEffect } from 'react';
 import { people, machinery, sunny, rainy, fire } from "../audio";
 import { Navbar, TimerDialog } from ".";
