@@ -4,4 +4,4 @@ During the pandemic, it was not very possible to go out in public to study. As s
 
 Click the link to check it out!
 
-[http://studyspaces-e887qqqde-kaitlynlie.vercel.app](https://studyspaces-e887qqqde-kaitlynlie.vercel.app)
+[https://studyspaces-o2tqn4feo-kaitlynlie.vercel.app](https://studyspaces-o2tqn4feo-kaitlynlie.vercel.app)
