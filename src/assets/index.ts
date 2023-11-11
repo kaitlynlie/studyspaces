@@ -7,6 +7,7 @@ import pause from './pause.svg'
 import todo from './todo.svg'
 import loaderheader from './loaderheader.png'
 import park from './park.png'
+import cafe from './cafe.png'
 
 export {
     title,
@@ -17,5 +18,6 @@ export {
     pause,
     todo,
     loaderheader,
-    park
+    park,
+    cafe
 }

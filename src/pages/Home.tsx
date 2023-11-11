@@ -1,6 +1,6 @@
 import styles from "./home.module.scss";
 import clsx from "clsx";
-import { coffee, play, pause } from "../assets";
+import { coffee, play, pause, cafe } from "../assets";
 import { ChangeEvent, useState, useRef, useEffect } from 'react';
 import { people, machinery, sunny, rainy, fire } from "../audio";
 import { Navbar, TimerDialog } from ".";
@@ -86,7 +86,7 @@ export function Home() {
             <div className={clsx(styles.content)}>
               <div className={clsx(styles.hero)}>
                 {/* <img id="leftArrow" src={leftarrow} className={clsx(styles.leftarrow)}/> */}
-                <img src={coffee} className={clsx(styles.coffee)} />
+                <img src={cafe} className={clsx(styles.coffee)} />
                 {/* <img id="rightArrow" src={rightarrow} className={clsx(styles.rightarrow)}/> */}
               </div>
 
