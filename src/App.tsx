@@ -5,6 +5,7 @@ import LoadingPage from "./pages/Loadingpage";
 import Menu from './pages/Menu'
 import { Park } from "./pages/Park";
 import { Routes, Route } from "react-router-dom";
+import styles from './index.module.scss'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +18,7 @@ function App() {
   }, []);
 
   return (
-    <div className={clsx("app", "w-full overflow-hidden")}>
+    <div className={clsx(styles.app)}>
       {isLoading ? (
         <LoadingPage />
       ) : (

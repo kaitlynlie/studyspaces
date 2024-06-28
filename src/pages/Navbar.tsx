@@ -1,6 +1,6 @@
 import styles from './Navbar.module.scss'
 import clsx from 'clsx'
-import { todo } from '../assets'
+// import { todo } from '../assets'
 import { useState } from 'react'
 import { RiCloseLine, RiArrowGoBackFill } from 'react-icons/ri';
 import { Dialog, DialogContent, DialogActions } from '@mui/material'
@@ -10,9 +10,9 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   const [openTodo, setOpenTodo] = useState(false);
   
-  const handleClickOpenTodo = () => {
-    setOpenTodo(true);
-  };
+  // const handleClickOpenTodo = () => {
+  //   setOpenTodo(true);
+  // };
   
   const handleClose = () => {
     setOpenTodo(false);
@@ -29,9 +29,9 @@ const Navbar = () => {
     <div className={clsx(styles.back)}>
       <Link onClick={openNav} to='/'><a><RiArrowGoBackFill color="#000" size={27} /></a></Link>
     </div>
-    <div className={clsx(styles.toggle)}>
+    {/* <div className={clsx(styles.toggle)}>
       <a onClick={handleClickOpenTodo}><img src={todo} /></a>
-    </div>
+    </div> */}
 
     <Dialog open={openTodo} onClose={handleClose}>
       <DialogActions>

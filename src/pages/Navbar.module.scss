@@ -4,9 +4,12 @@ nav.navbar {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-left: 10px;
-  margin-right: 10px;
+  // margin-left: 10px;
+  // margin-right: 10px;
   // margin-bottom: -83px;
+  .back {
+    margin-left: -50px;
+  }
   .toggle {
     color: black;
     z-index: 10;

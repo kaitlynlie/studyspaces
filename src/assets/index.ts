@@ -1,4 +1,4 @@
-import title from './title.svg'
+import title from './hero.png'
 import coffee from './coffee.png'
 import leftarrow from './leftarrow.svg'
 import rightarrow from './rightarrow.svg'

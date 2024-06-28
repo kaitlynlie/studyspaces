@@ -5,7 +5,6 @@ import { ChangeEvent, useState, useRef, useEffect } from 'react';
 import { people, machinery, sunny, rainy, fire } from "../audio";
 import { Navbar, TimerDialog } from ".";
 
-
 export function Home() {
   const [sliderValues, setSliderValues] = useState({
     peopleVolumeSlider: 1,
@@ -72,25 +71,26 @@ export function Home() {
 
   return (
     <div className={clsx(styles.body)}>
-      <div className={clsx(styles.leftleaves)}></div>
-      <div className={clsx(styles.rightleaves)}></div>
+      {/* <div className={clsx(styles.leftleaves)}></div>
+      <div className={clsx(styles.rightleaves)}></div> */}
       <Navbar />
         <section className={clsx(styles.home)}>
-          <div className={clsx(styles.header)}>
+          {/* <div className={clsx(styles.header)}>
             <div className={clsx(styles.studyspaces)}>
-              {/* <img src={title} className={clsx(styles.title)}/> */}
+              <img src={title} className={clsx(styles.title)}/>
             </div>
-          </div>
+          </div> */}
+
+            <div className={clsx(styles.smallhero)}>
+                {/* <img id="leftArrow" src={leftarrow} className={clsx(styles.leftarrow)}/> */}
+                <img src={cafe} className={clsx(styles.smallcoffee)} />
+                {/* <img id="rightArrow" src={rightarrow} className={clsx(styles.rightarrow)}/> */}
+            </div>
           
             {/* <h4>Cafe</h4> */}
             <div className={clsx(styles.content)}>
-              <div className={clsx(styles.hero)}>
-                {/* <img id="leftArrow" src={leftarrow} className={clsx(styles.leftarrow)}/> */}
-                <img src={cafe} className={clsx(styles.coffee)} />
-                {/* <img id="rightArrow" src={rightarrow} className={clsx(styles.rightarrow)}/> */}
-              </div>
 
-              <div className={clsx(styles.audiolist)}>
+            <div className={clsx(styles.audiolist)}>
                 <div className={clsx(styles.audio)}>
                   <div className={clsx(styles.title)}>
                     <p>People</p>
@@ -250,8 +250,16 @@ export function Home() {
                     className={clsx(styles.input)}
                   />
                 </div>
-                <TimerDialog />
+                {/* <TimerDialog /> */}
               </div>
+
+              <div className={clsx(styles.hero)}>
+                {/* <img id="leftArrow" src={leftarrow} className={clsx(styles.leftarrow)}/> */}
+                <img src={cafe} className={clsx(styles.coffee)} />
+                {/* <img id="rightArrow" src={rightarrow} className={clsx(styles.rightarrow)}/> */}
+              </div>
+
+              <TimerDialog />
             </div>
         </section>
     </div>

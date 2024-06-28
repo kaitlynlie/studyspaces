@@ -23,7 +23,7 @@ function Menu() {
       } else if (location === "beach") {
         navigate("/beach");
       }
-    }, 4000);
+    }, 1000);
   };
 
   return (
@@ -31,8 +31,8 @@ function Menu() {
       {!isLoading && (
         <>
           <img src={title} alt="Logo" />
-          <h1 style={{ fontSize: "20px" }}>Welcome to Study Spaces! Thanks for stopping by!</h1>
-          <h2 style={{ marginTop: "-10px", fontSize: "16px" }}>Where would you like to travel today?</h2>
+          <h1 style={{ fontSize: "20px" }}>thanks for stopping by!</h1>
+          {/* <h2 style={{ marginTop: "-10px", fontSize: "16px" }}>Where would you like to travel today?</h2> */}
         </>
       )}
       <div className={clsx(styles.dropdown)}>
@@ -45,11 +45,13 @@ function Menu() {
               value={selectedLocation}
               onChange={handleLocationChange}
             >
-              <option value="">Select a location.</option>
-              <option value="cafe">Cafe</option>
-              <option value="park">Park (Work in Progress)</option>
+              <option value="">select a location</option>
+              <option value="cafe">coffee shop</option>
+              <option value="park" disabled>
+                park (work in progress)
+              </option>
               <option value="beach" disabled>
-                Beach (Coming Soon)
+                beach (coming soon)
               </option>
             </select>
             <span className={styles.arrow}></span>
