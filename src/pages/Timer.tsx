@@ -89,14 +89,14 @@ const TimerDialog = () => {
 
   return (
     <div className={clsx(styles.timer)}>
-      <h2>Pomodoro Timer</h2>
+      {/* <h2>pomodoro timer</h2> */}
       <div className={clsx(styles.countdown)}>{formatTime(timeRemaining)}</div>
       <div className={clsx(styles.container)}><input
         type="number"
         min={1}
         value={customTime}
         onChange={handleTimeInputChange}
-        placeholder="Enter time in minutes"
+        placeholder="enter time in minutes"
         className={clsx(styles.input)}
       /></div>
 
@@ -106,7 +106,7 @@ const TimerDialog = () => {
             onClick={startTimer}
             className={clsx(styles.start)}
           >
-            Start
+            start
           </button>
         )}
 
@@ -115,7 +115,7 @@ const TimerDialog = () => {
             onClick={stopTimer}
             className={clsx(styles.stop)}
           >
-            Stop
+            stop
           </button>
         )}
 
@@ -123,7 +123,7 @@ const TimerDialog = () => {
           onClick={resetTimer}
           className={clsx(styles.reset)}
         >
-          Reset
+          reset
         </button>
       </div>
     </div>

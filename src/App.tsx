@@ -8,29 +8,30 @@ import { Routes, Route } from "react-router-dom";
 import styles from './index.module.scss'
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    // Simulate a delay to showcase the loading animation
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   // Simulate a delay to showcase the loading animation
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2000);
+  // }, []);
 
   return (
-    <div className={clsx(styles.app)}>
-      {isLoading ? (
-        <LoadingPage />
-      ) : (
-        <>
-          <Routes>
-            <Route index path="/" element={<Menu />} />
-            <Route path="/cafe" element={<Home />} />
-            <Route path='/park' element={<Park />} />
-          </Routes>
-        </>
-      )}
-    </div>
+    <Home />
+  //   <div className={clsx(styles.app)}>
+  //     {isLoading ? (
+  //       <LoadingPage />
+  //     ) : (
+  //       <>
+  //         <Routes>
+  //           <Route index path="/" element={<Menu />} />
+  //           <Route path="/cafe" element={<Home />} />
+  //           <Route path='/park' element={<Park />} />
+  //         </Routes>
+  //       </>
+  //     )}
+  //   </div>
   );
 }
 
