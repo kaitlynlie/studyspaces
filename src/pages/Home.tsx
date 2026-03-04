@@ -1,9 +1,9 @@
 import styles from "./home.module.scss";
 import clsx from "clsx";
-import { play, pause, cafe, light, hanginglight, title, cover } from "../assets";
+import { play, pause, hanginglight, cover } from "../assets";
 import { ChangeEvent, useState, useRef, useEffect } from 'react';
 import { people, machinery, sunny, rainy, fire } from "../audio";
-import { Navbar, TimerDialog } from ".";
+import { TimerDialog } from ".";
 
 export function Home() {
   const [sliderValues, setSliderValues] = useState({
