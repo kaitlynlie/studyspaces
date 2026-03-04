@@ -32,25 +32,21 @@ const TimerDialog = () => {
   };
 
   const startTimer = () => {
-    if (!isRunning && !wasPaused) {
-      // Parse the customTime or set a default value if it's empty
-      const timeInSeconds = parseInt(customTime) * 60 || 10 * 60; // Use a default of 10 minutes if customTime is empty
+  if (!isRunning) {
+    if (wasPaused) {
+      // Resume from paused timeRemaining
+      setIsRunning(true);
+      setWasPaused(false);
+    } else {
+      // Start fresh: use customTime or default
+      const timeInSeconds = parseInt(customTime) * 60 || 10 * 60;
       setTimeRemaining(timeInSeconds);
       setIsRunning(true);
       localStorage.setItem('customTime', customTime);
-    } else {
-      // Check if the timer was paused and customTime is modified
-      if (wasPaused && customTime !== '') {
-        const timeInSeconds = parseInt(customTime) * 60;
-        setTimeRemaining(timeInSeconds);
-      }
-      setIsRunning(true);
-      setWasPaused(false);
     }
-  };
+  }
+};
   
-  
-
   useEffect(() => {
     const savedCustomTime = localStorage.getItem('customTime');
     if (savedCustomTime) {

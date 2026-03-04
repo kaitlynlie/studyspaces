@@ -56,6 +56,19 @@ export function Home() {
     }
   }, [isPlaying]);
 
+  useEffect(() => {
+  const audio = audioRefs.current.peopleAudioPlayer;
+  if (!audio) return;
+
+    const handleEnded = () => {
+      audio.currentTime = 0;
+      audio.play();
+    };
+
+    audio.addEventListener("ended", handleEnded);
+    return () => audio.removeEventListener("ended", handleEnded);
+  }, []);
+
   const handleSliderChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = event.target;
     const audioElementId = id.replace("VolumeSlider", "AudioPlayer");
@@ -107,9 +120,9 @@ export function Home() {
                   <audio
                     ref={(ref) => (audioRefs.current.peopleAudioPlayer = ref)}
                     id="peopleAudioPlayer"
-                    loop  
+                    loop
                   >
-                    <source src={people} type="audio/wav" />
+                    <source src={people.replace(".wav", ".ogg")} type="audio/ogg" />
                   </audio>
 
                   <input

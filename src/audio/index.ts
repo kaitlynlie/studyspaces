@@ -1,4 +1,4 @@
-import people from './people.wav'
+import people from './people.ogg'
 import machinery from './softmachinery.mp3'
 import sunny from './sun.wav'
 import rainy from './rain.wav'
