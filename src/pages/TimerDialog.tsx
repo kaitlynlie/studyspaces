@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "motion/react";
 import clsx from "clsx";
-import styles from "./timer.module.scss";
+import styles from "./Timer.module.scss";
 
 interface TimerDialogProps {
   className?: string;
