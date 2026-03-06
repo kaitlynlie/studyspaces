@@ -13,7 +13,7 @@
         
         @media (max-width: 990px) {
           justify-content: flex-start;
-          padding-top: 200px;
+          padding-top: 100px;
           padding-bottom: 100px;
         }
         .smallhero {
@@ -54,7 +54,7 @@
 
         .lights1 {
           animation-delay: 0s, 1.2s;
-          width: 12%;
+          width: 140px;
           position: absolute;
           top: 0;
           left: 0;
@@ -62,15 +62,18 @@
         }
         .lights {
           animation-delay: 0.2s, 1.4s;
-          width: 7%;
+          width: 70px;
           position: absolute;
           top: 0;
           left: 87%;
           z-index: 1;
+          @media (max-width: 517px) {
+            left: 80%;
+          }
         }
         .lights2 {
           animation-delay: 0.4s, 1.6s;
-          width: 10%;
+          width: 100px;
           position: absolute;
           top: 0;
           right: 0;
