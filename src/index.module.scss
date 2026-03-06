@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+// @import "./style/globals/general.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background-image: url('./assets/cafe.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;   // prevent bouncing
+  -webkit-overflow-scrolling: touch; // smooth mobile scroll
+  overflow-x: hidden;               // prevent horizontal peek
+  
+  /* Desktop: lock scroll */
+  @media (min-width: 991px) {
+    overflow: hidden;
+  }
+
+  /* Tablet & below: allow scroll */
+  @media (max-width: 990px) {
+    overflow-y: auto;
+  }
+}
+
+:root {
+  font-family: Inter;
+}
+
+.app {
+  font-family: Inter;
+  overflow-x: hidden;
+  width: 100%;
+  //height: 100%;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+}
+
+/* WebKit browsers */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #828282; 
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+::-webkit-scrollbar-track {
+  background: #b5b5b5;
+  border-radius: 6px;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #828282 #b5b5b5;
+}
+
+

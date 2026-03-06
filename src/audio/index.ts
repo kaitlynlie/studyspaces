@@ -1,0 +1,17 @@
+import people from './people.ogg'
+import machinery from './softmachinery.mp3'
+import sunny from './sun.wav'
+import rainy from './rain.wav'
+import fire from './fireplace.wav'
+import timer from './timer.wav'
+import birds from './birds.wav'
+
+export {
+    people,
+    machinery,
+    sunny,
+    rainy,
+    fire,
+    timer,
+    birds
+}
