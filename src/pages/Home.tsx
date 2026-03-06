@@ -6,13 +6,88 @@ import { people, machinery, sunny, rainy, fire } from "../audio";
 import { TimerDialog } from ".";
 import { BaristaPet } from "./BaristaPet";
 
+interface AudioState {
+  [key: string]: boolean;
+}
+
+interface SliderValues {
+  peopleVolumeSlider: number;
+  machVolumeSlider: number;
+  sunnyVolumeSlider: number;
+  rainyVolumeSlider: number;
+  fireVolumeSlider: number;
+}
+
+// ── AudioRow lives OUTSIDE Home so it never remounts on state changes ─────────
+interface AudioRowProps {
+  label: string;
+  audioId: string;
+  sliderId: keyof SliderValues;
+  src: string;
+  srcType: string;
+  sliderValues: SliderValues;
+  isPlaying: AudioState;
+  onPlay: (audioId: string) => void;
+  onSliderChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  audioRefs: React.MutableRefObject<{ [key: string]: HTMLAudioElement | null }>;
+}
+
+function AudioRow({
+  label,
+  audioId,
+  sliderId,
+  src,
+  srcType,
+  sliderValues,
+  isPlaying,
+  onPlay,
+  onSliderChange,
+  audioRefs,
+}: AudioRowProps) {
+  const playing = !!isPlaying[audioId];
+  const icon = playing ? pause : play;
+
+  return (
+    <div className={clsx(styles.audio, playing && styles.playing)}>
+      <div className={styles.title}>
+        <p>{label}</p>
+        <button
+          className={clsx(styles.playBtn, playing && styles.active)}
+          onClick={() => onPlay(audioId)}
+          aria-label={playing ? `Pause ${label}` : `Play ${label}`}
+        >
+          <img src={icon} width="11" height="11" alt={playing ? "pause" : "play"} />
+        </button>
+      </div>
+      <audio
+        ref={(ref) => (audioRefs.current[audioId] = ref)}
+        id={audioId}
+        loop
+      >
+        <source src={src} type={srcType} />
+      </audio>
+      <input
+        type="range"
+        id={sliderId}
+        min={0}
+        max={1}
+        step={0.01}
+        value={sliderValues[sliderId]}
+        onChange={onSliderChange}
+        className={clsx(styles.input)}
+      />
+    </div>
+  );
+}
+
+// ── Home ──────────────────────────────────────────────────────────────────────
 export function Home() {
-  const [sliderValues, setSliderValues] = useState({
-    peopleVolumeSlider: 1,
-    machVolumeSlider: 1,
-    sunnyVolumeSlider: 1,
-    rainyVolumeSlider: 1,
-    fireVolumeSlider: 1,
+  const [sliderValues, setSliderValues] = useState<SliderValues>({
+    peopleVolumeSlider: 0.7,
+    machVolumeSlider: 0.7,
+    sunnyVolumeSlider: 0.7,
+    rainyVolumeSlider: 0.7,
+    fireVolumeSlider: 0.7,
   });
 
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement | null }>({
@@ -25,254 +100,76 @@ export function Home() {
 
   const [isPlaying, setIsPlaying] = useState<AudioState>({});
 
-  interface AudioState {
-    [key: string]: boolean;
-  }
-
   const handlePlayButtonClick = (audioId: string) => {
-    setIsPlaying((prevState) => ({
-      ...prevState,
-      [audioId]: !prevState[audioId] || !prevState[audioId],
-    }));
-  };
-
-  const getPlayPauseIcon = (audioId: string) => {
-    if (isPlaying[audioId]) {
-      return pause;
-    } else {
-      return play;
-    }
+    setIsPlaying((prev) => ({ ...prev, [audioId]: !prev[audioId] }));
   };
 
   useEffect(() => {
     for (const audioId in audioRefs.current) {
-      const audioElement = audioRefs.current[audioId];
-      if (audioElement) {
-        if (isPlaying[audioId]) {
-          audioElement.play();
-        } else {
-          audioElement.pause();
-        }
+      const el = audioRefs.current[audioId];
+      if (el) {
+        isPlaying[audioId] ? el.play() : el.pause();
       }
     }
   }, [isPlaying]);
 
   useEffect(() => {
-  const audio = audioRefs.current.peopleAudioPlayer;
-  if (!audio) return;
-
-    const handleEnded = () => {
-      audio.currentTime = 0;
-      audio.play();
-    };
-
+    const audio = audioRefs.current.peopleAudioPlayer;
+    if (!audio) return;
+    const handleEnded = () => { audio.currentTime = 0; audio.play(); };
     audio.addEventListener("ended", handleEnded);
     return () => audio.removeEventListener("ended", handleEnded);
   }, []);
 
+  useEffect(() => {
+    for (const audioId in audioRefs.current) {
+      const el = audioRefs.current[audioId];
+      if (el) {
+        const sliderId = audioId.replace("AudioPlayer", "VolumeSlider");
+        el.volume = sliderValues[sliderId as keyof SliderValues] ?? 0.7;
+      }
+    }
+  }, []);
+
   const handleSliderChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = event.target;
-    const audioElementId = id.replace("VolumeSlider", "AudioPlayer");
-    const audioElement = audioRefs.current[audioElementId];
-    if (audioElement) {
-      audioElement.volume = parseFloat(value);
-    }
-    setSliderValues((prevValues) => ({
-      ...prevValues,
-      [id]: parseFloat(value),
-    }));
+    const el = audioRefs.current[id.replace("VolumeSlider", "AudioPlayer")];
+    if (el) el.volume = parseFloat(value);
+    setSliderValues((prev) => ({ ...prev, [id]: parseFloat(value) }));
   };
+
+  const rowProps = { sliderValues, isPlaying, onPlay: handlePlayButtonClick, onSliderChange: handleSliderChange, audioRefs };
 
   return (
     <div className={clsx(styles.body)}>
-      {/* <div className={clsx(styles.leftleaves)}></div>
-      <div className={clsx(styles.rightleaves)}></div> */}
-      {/* <Navbar /> */}
-        <section className={clsx(styles.home)}>
-          <div>
-            <img src={hanginglight} className={clsx(styles.lights1)}/>
-            <img src={hanginglight} className={clsx(styles.lights)}/>
-            <img src={hanginglight} className={clsx(styles.lights2)}/>
-          </div>
-            {/* <h4>Cafe</h4> */}
-            {/* <img src={title} className={clsx(styles.title)}/> */}
-            <div className={clsx(styles.content)}>
-              <div><TimerDialog /></div>
-              <div className={clsx(styles.audiolist)}>
-                <div className={clsx(styles.playlistHeader)}>
-                  <img src={cover} className={clsx(styles.cover)} />
-                  <div className={clsx(styles.meta)}>
-                    <h2>cafe</h2>
-                    <p>1pm afternoon waiting for my drink</p>
-                  </div>
-                </div>
-                <div className={clsx(styles.audio)}>
-                  <div className={clsx(styles.title)}>
-                    <p>people</p>
-                    <img
-                      src={getPlayPauseIcon("peopleAudioPlayer")}
-                      width="11"
-                      height="11"
-                      id="peoplePlayButton"
-                      onClick={() => handlePlayButtonClick("peopleAudioPlayer")}
-                    />
-                  </div>
+      <section className={clsx(styles.home)}>
+        <div>
+          <img src={hanginglight} className={clsx(styles.lights1)} />
+          <img src={hanginglight} className={clsx(styles.lights)} />
+          <img src={hanginglight} className={clsx(styles.lights2)} />
+        </div>
 
-                  <audio
-                    ref={(ref) => (audioRefs.current.peopleAudioPlayer = ref)}
-                    id="peopleAudioPlayer"
-                    loop
-                  >
-                    <source src={people.replace(".wav", ".ogg")} type="audio/ogg" />
-                  </audio>
+        <div className={clsx(styles.content)}>
+          <div><TimerDialog /></div>
 
-                  <input
-                    type="range"
-                    id="peopleVolumeSlider"
-                    min={0}
-                    max={1}
-                    step={0.1}
-                    value={sliderValues.peopleVolumeSlider}
-                    onChange={handleSliderChange}
-                    className={clsx(styles.input)}
-                  />
-                </div>
-
-                <div className={clsx(styles.audio)}>
-                  <div className={clsx(styles.title)}>
-                    <p>machinery</p>
-                    <img
-                      src={getPlayPauseIcon("machAudioPlayer")}
-                      width="11"
-                      height="11"
-                      id="machPlayButton"
-                      onClick={() => handlePlayButtonClick("machAudioPlayer")}
-                    />
-                  </div>
-
-                  <audio
-                    ref={(ref) => (audioRefs.current.machAudioPlayer = ref)}
-                    id="machAudioPlayer"
-                    loop  
-                  >
-                    <source src={machinery} type="audio/mp3" />
-                  </audio>
-
-                  <input
-                    type="range"
-                    id="machVolumeSlider"
-                    min={0}
-                    max={1}
-                    step={0.1}
-                    value={sliderValues.machVolumeSlider}
-                    onChange={handleSliderChange}
-                    className={clsx(styles.input)}
-                  />
-                </div>
-
-                <div className={clsx(styles.audio)}>
-                  <div className={clsx(styles.title)}>
-                    <p>sunny day</p>
-                    <img
-                      src={getPlayPauseIcon("sunnyAudioPlayer")}
-                      width="11"
-                      height="11"
-                      id="sunnyPlayButton"
-                      onClick={() => handlePlayButtonClick("sunnyAudioPlayer")}
-                    />
-                  </div>
-
-                  <audio
-                    ref={(ref) => (audioRefs.current.sunnyAudioPlayer = ref)}
-                    id="sunnyAudioPlayer"
-                    loop 
-                  >
-                    <source src={sunny} type="audio/wav" />
-                  </audio>
-
-                  <input
-                    type="range"
-                    id="sunnyVolumeSlider"
-                    min={0}
-                    max={1}
-                    step={0.1}
-                    value={sliderValues.sunnyVolumeSlider}
-                    onChange={handleSliderChange}
-                    className={clsx(styles.input)}
-                  />
-                </div>
-
-                <div className={clsx(styles.audio)}>
-                  <div className={clsx(styles.title)}>
-                    <p>rainy day</p>
-                    <img
-                      src={getPlayPauseIcon("rainyAudioPlayer")}
-                      width="11"
-                      height="11"
-                      id="rainyPlayButton"
-                      onClick={() => handlePlayButtonClick("rainyAudioPlayer")}
-                    />
-                  </div>
-
-                  <audio
-                    ref={(ref) => (audioRefs.current.rainyAudioPlayer = ref)}
-                    id="rainyAudioPlayer"
-                    loop 
-                  >
-                    <source src={rainy} type="audio/wav" />
-                  </audio>
-
-                  <input
-                    type="range"
-                    id="rainyVolumeSlider"
-                    min={0}
-                    max={1}
-                    step={0.1}
-                    value={sliderValues.rainyVolumeSlider}
-                    onChange={handleSliderChange}
-                    className={clsx(styles.input)}
-                  />
-                </div>
-
-                <div className={clsx(styles.audio)}>
-                  <div className={clsx(styles.title)}>
-                    <p>fireplace</p>
-                    <img
-                      src={getPlayPauseIcon("fireAudioPlayer")}
-                      width="11"
-                      height="11"
-                      id="firePlayButton"
-                      onClick={() => handlePlayButtonClick("fireAudioPlayer")}
-                    />
-                  </div>
-
-                  <audio
-                    ref={(ref) => (audioRefs.current.fireAudioPlayer = ref)}
-                    id="fireAudioPlayer"
-                    loop  
-                  >
-                    <source src={fire} type="audio/wav" />
-                  </audio>
-
-                  <input
-                    type="range"
-                    id="fireVolumeSlider"
-                    min={0}
-                    max={1}
-                    step={0.1}
-                    value={sliderValues.fireVolumeSlider}
-                    onChange={handleSliderChange}
-                    className={clsx(styles.input)}
-                  />
-                </div>
-                {/* <TimerDialog /> */}
+          <div className={clsx(styles.audiolist)}>
+            <div className={clsx(styles.playlistHeader)}>
+              <img src={cover} className={clsx(styles.cover)} />
+              <div className={clsx(styles.meta)}>
+                <h2>cafe</h2>
+                <p>1pm afternoon waiting for my drink</p>
               </div>
-
-              {/* <TimerDialog /> */}
             </div>
-        </section>
-        <BaristaPet />
 
+            <AudioRow label="people"    audioId="peopleAudioPlayer" sliderId="peopleVolumeSlider" src={people.replace(".wav", ".ogg")} srcType="audio/ogg" {...rowProps} />
+            <AudioRow label="machinery" audioId="machAudioPlayer"   sliderId="machVolumeSlider"   src={machinery} srcType="audio/mp3" {...rowProps} />
+            <AudioRow label="sunny day" audioId="sunnyAudioPlayer"  sliderId="sunnyVolumeSlider"  src={sunny}     srcType="audio/wav" {...rowProps} />
+            <AudioRow label="rainy day" audioId="rainyAudioPlayer"  sliderId="rainyVolumeSlider"  src={rainy}     srcType="audio/wav" {...rowProps} />
+            <AudioRow label="fireplace" audioId="fireAudioPlayer"   sliderId="fireVolumeSlider"   src={fire}      srcType="audio/wav" {...rowProps} />
+          </div>
+        </div>
+      </section>
+      <BaristaPet />
     </div>
   );
 }
